@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+    <title>Matt's Online Dictionary</title>
+</head>
+<body>
+
+    <div class="app-wrapper">
+
+        <header>
+            <div class="left-col">
+                <img src="./assets/images/logo.svg" alt="main-logo" class="logo">
+            </div>
+            
+            <div class="right-col">
+                <select id="fontSelector" onchange="changeFont()">
+                    <option value="sans-serif">San Serif</option>
+                    <option value="serif">Serif</option>
+                    <option value="monospace">Mono</option>
+                </select>
+
+                <div class="switch-container">
+                    <span class="switch-label">Switch:</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                    <img src="./assets/images/icon-moon.svg" alt="theme icon" class="theme-icon">
+                </div>
+            </div>
+        </header>
+
+        <main>
+
+            <div class="searchbar-wr">
+                <input type="text" id="searchbar">
+                <img src="./assets/images/icon-search.svg" alt="search-icon" class="search-icon">
+            </div>
+
+            <div class="word-display-wr">
+                <div class="left-col">
+                    <div class="word-title-wr">
+                        <h1 class="word-title heading-l">keyboard</h1>
+                        <p class="audio-que heading-m">/ˈkiːbɔːd/</p>
+                    </div>
+                </div>
+
+                <div class="right-col">
+                    <img src="./assets/images/icon-play.svg" alt="play audio btn" class="play-audio-btn">
+                </div>
+            </div>
+
+            <div class="noun-content-wr">
+                <h2 class="section-header ">noun</h2>
+                
+                <h3 class="heading-s">Meaning</h3>
+                <ul class="noun-meanings-list">
+                    <li>(etc.) A set of keys used to operate a typewriter, computer etc.</li>
+                    <li>(etc.) A set of keys used to operate a typewriter, computer etc.</li>
+                    <li>(etc.) A set of keys used to operate a typewriter, computer etc.</li>
+                </ul>
+                
+                <div class="synonyms-wr">
+                    <h3 class="heading-s">Synonyms</h3>
+                    <a href="###" class="synonyms-link">electronic keyboard</a>
+                </div>
+            </div>
+            
+            <div class="verb-content-wr">
+                <h2 class="section-header ">verb</h2>
+
+                <ul class="verb-meanings-list">
+                    <li>(etc.) A set of keys used to operate a typewriter, computer etc.</li>
+                    <p class="verb-example">“Keyboarding is the part of this job I hate the most.”</p>
+                </ul>
+            </div>
+
+            <footer>
+                <p class="source-header body-s">Source</p>
+                <a href="###" class="source-link">https://en.wiktionary.org/wiki/keyboard</a>
+                <img src="./assets/images/icon-new-window.svg" alt="new window icon" class="new-window-icon">
+            </footer>
+
+
+        </main>
+    </div>
+
+</body>
+</html>
