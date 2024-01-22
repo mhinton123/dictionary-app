@@ -142,8 +142,20 @@ header .right-col {
         font-size: 1.25rem;
     }
 
+    #fontSelector {
+        font-size: 1.25rem;
+    }
+
     .searchbar-wr {
         margin-top: 3em;
+    }
+
+    #searchbar {
+        font-size: 1.25rem;
+    }
+
+    .audio-que {
+        font-size: 1.5rem;
     }
 
     .word-display-wr .heading-l {
