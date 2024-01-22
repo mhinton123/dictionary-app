@@ -4,7 +4,7 @@
 }
 
 body {
-    margin: 0;
+    margin: 1em;
     background: white;
     font-size: 0.95rem;
     line-height: 1.4rem;
@@ -15,7 +15,8 @@ li {
 }
 
 .app-wrapper {
-    margin: 1em;
+    max-width: 768px;
+    margin: 0 auto;
 }
 
 
@@ -132,9 +133,61 @@ header .right-col {
 }
 
 
+/* Tablet */ 
 
+@media screen and (min-width: 769px) {
 
+    body {
+        padding: 1.8em;
+        font-size: 1.25rem;
+    }
 
+    .searchbar-wr {
+        margin-top: 3em;
+    }
+
+    .word-display-wr .heading-l {
+        font-size: 4rem;
+        margin-bottom: 0.5em;
+    }
+
+    .play-audio-btn {
+        width: 75px;
+    }
+
+    .word-display-wr {
+        margin-bottom: 1em;
+    }
+
+    .section-header {
+        font-size: 1.5rem;
+    }
+
+    .heading-s, .link-text{
+        font-size: 1.25rem;
+    }
+
+    footer {
+        display: flex;
+        align-items: center;
+    }
+
+    footer{
+        margin: 1.5em 0 0 0;
+    }
+
+    .source-link-wr {
+        align-items: center;
+    }
+
+    .source-header {
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+        margin-right: 20px;
+    }
+
+}
 
 
 
