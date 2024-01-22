@@ -1,9 +1,8 @@
 /* Sans Serif */
 
 .heading-l {
-    font-size: 4rem;
+    font-size: 2rem;
     color: #2d2d2d;
-    line-height: 4.81rem;
     font-weight: 700;
 }
 
@@ -15,8 +14,8 @@
 }
 
 .heading-s {
-    font-size: 1.25rem;
-    color: #2d2d2d;
+    font-size: 1rem;
+    color: #757575;
     line-height: 1.5rem;
     font-weight: 400;
 }
@@ -41,5 +40,31 @@
 
 .mono {
     font-family: Inconsolata, Serif;
+}
+
+.section-header-wr {
+    display: flex;
+    align-items: center;
+}
+
+.section-header {
+    font-size: 1.125rem;
+}
+
+.header-line {
+    border: #e5e5e5 solid 1px;
+    height: 1px;
+    width: 100%;
+    margin-left: 1em;
+}
+
+.link-text {
+    font-weight: 700;
+    color: var(--purple);
+    text-decoration: none;
+}
+
+.example-text {
+    color: #757575;
 }
 

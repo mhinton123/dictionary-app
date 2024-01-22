@@ -1,9 +1,135 @@
 * {
     font-family: Inter, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: white;
+    font-size: 0.95rem;
+    line-height: 1.4rem;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.app-wrapper {
+    margin: 1em;
 }
 
 
+/* Header */
 
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 28px;
+    height: 32px;
+}
+
+header .right-col {
+    display: flex;
+}
+
+#fontSelector {
+    border: none;
+    background: none;
+    font-weight: 700;
+    font-size: 0.875rem;
+    padding-right: 0.5em;
+    margin-right: 0.5rem;
+}
+
+.switch-container {
+    border-left: rgb(205, 205, 205) solid 1px;
+    padding-left: 0.7em;
+}
+
+.theme-icon {
+    width: 20px;
+    margin-left: 0.5rem;
+}
+
+/* Searchbar */
+
+.searchbar-wr {
+    background: #F4F4F4;
+    display: flex;
+    width: 100%;
+    border-radius: 16px;
+    justify-content: space-between;
+    padding-right: 1em;
+    margin-top: 1.2em;
+}
+
+#searchbar {
+    border: none;
+    background: none;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2D2D2D;
+    padding: 0.7em 1em;
+    width: 60%;
+}
+
+/* Word Display */
+
+.word-display-wr {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.word-title {
+    padding-bottom: 0;
+    margin-bottom: 8px;
+}
+.audio-que {
+    color: var(--purple);
+    margin: 0;
+}
+
+.play-audio-btn {
+    width: 48px;
+    margin-top: 40px;
+}
+
+/* Noun Content */
+
+.synonyms-wr {
+    display: flex;
+    align-items: center;
+}
+
+.synonyms-wr .link-text {
+    margin-left: 1.5em;
+}
+
+/* Verb Content */
+
+.verb-content-wr {
+    border-bottom: 1px rgb(205, 205, 205) solid;
+    padding-bottom: 1em;
+}
+
+
+/* Source Content */
+
+.source-header {
+    text-decoration: underline;
+    color: #757575;
+    margin: 1.5em 0 0.4em 0;
+}
+
+.source.link-wr {
+    display: flex;
+    align-items: center;
+}
 
 
 
@@ -52,8 +178,8 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 60px;
-    height: 34px;
+    width: 40px;
+    height: 20px;
 }
 
 .switch input {
@@ -77,8 +203,8 @@
 .slider:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: 12px;
+    width: 12px;
     left: 4px;
     bottom: 4px;
     background-color: white;
@@ -91,5 +217,5 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(26px);
+    transform: translateX(20px);
 }
