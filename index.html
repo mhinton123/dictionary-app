@@ -42,12 +42,12 @@
             </div>
         </header>
 
-        <div class="searchbar-wr">
+        <div class="searchbar-wr" id="searchbar-wr">
             <input type="text" id="searchbar" placeholder="keyboard">
-            <img src="./assets/images/search-icon.svg" alt="search-icon" class="search-icon">
+            <img src="./assets/images/search-icon.svg" alt="search-icon" class="search-icon" id="search-btn">
         </div>
 
-        <main>
+        <main id="main-container">
 
             <div class="word-display-wr">
                 <div class="left-col">
@@ -57,8 +57,12 @@
                     </div>
                 </div>
 
-                <div class="right-col">
-                    <img src="./assets/images/icon-play.svg" alt="play audio btn" class="play-audio-btn">
+                <div class="right-col" id="audio-play-btn-wr">
+                    <button id="audio-play-btn"><img src="./assets/images/icon-play.svg" alt="play audio btn" class="play-audio-btn"></button>
+                
+                    <audio id="audio-player">
+                        <source id="audio-source" src="" type="audio/mp3">
+                    </audio>
                 </div>
             </div>
 
@@ -71,8 +75,8 @@
                 <h3 class="heading-s">Meaning</h3>
                 <ul class="noun-meanings-list" id="noun-meanings-list">
                     <li>(etc.) A set of keys used to operate a typewriter, computer etc.</li>
-                    <li>(etc.) A set of keys used to operate a typewriter, computer etc.</li>
-                    <li>(etc.) A set of keys used to operate a typewriter, computer etc.</li>
+                    <li>A component of many instruments including the piano, organ, and harpsichord consisting of usually black and white keys that cause different tones to be produced when struck.</li>
+                    <li>A device with keys of a musical keyboard, used to control electronic sound-producing devices which may be built into or separate from the keyboard device.</li>
                 </ul>
                 
                 <div class="synonyms-wr">
@@ -98,7 +102,7 @@
             <footer>
                 <p class="source-header body-s">Source</p>
                 <div class="source-link-wr">
-                    <a href="###" class="source-link body-s" id="source-link">https://en.wiktionary.org/wiki/keyboard</a>
+                    <a href="https://en.wiktionary.org/wiki/keyboard" class="source-link body-s" id="source-link">https://en.wiktionary.org/wiki/keyboard</a>
                     <img src="./assets/images/icon-new-window.svg" alt="new window icon" class="new-window-icon">
                 </div>
             </footer>

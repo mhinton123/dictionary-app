@@ -7,7 +7,7 @@ body {
     margin: 1em;
     background: white;
     font-size: 0.95rem;
-    line-height: 1.4rem;
+    line-height: 1.6rem;
 }
 
 li {
@@ -78,6 +78,11 @@ header .right-col {
     width: 60%;
 }
 
+#searchbar:focus {
+    border: none;
+    outline: none;
+}
+
 /* Word Display */
 
 .word-display-wr {
@@ -97,7 +102,12 @@ header .right-col {
 
 .play-audio-btn {
     width: 48px;
+}
+
+#audio-play-btn {
     margin-top: 40px;
+    border: none;
+    background: none;
 }
 
 /* Noun Content */
