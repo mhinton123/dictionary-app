@@ -121,6 +121,12 @@ header .right-col {
     margin-left: 1.5em;
 }
 
+.synonyms-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 /* Verb Content */
 
 .verb-content-wr {
