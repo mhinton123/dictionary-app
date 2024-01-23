@@ -5,7 +5,7 @@ const searchBarWrapper = document.getElementById('searchbar-wr')
 const audioPlayBtn = document.getElementById('audio-play-btn')
 const audioPlayer = document.getElementById('audio-player')
 const audioContainer = document.getElementById('audio-play-btn-wr')
-
+let globalData 
 
 
 // renders page when the user clicks search btn
@@ -30,14 +30,19 @@ searchBtn.addEventListener('click', function(e){
 // plays audio when btn is clicked
 audioPlayBtn.addEventListener('click', function(e){
     
-    audioPlayer.load()
-    audioPlayer.pause()
-    
-    audioPlayer.addEventListener('canplay', function() {
-        audioPlayer.play()
-    })
+    getAudioLink(globalData)
     
 })
+
+function getAudioLink(data) {
+
+    const audioLink = data[0].phonetics.find(audioObj => audioObj.audio !== '')
+    audioPlayer.src = audioLink.audio
+    audioPlayer.addEventListener('canplay', function(){
+        audioPlayer.play()
+    })
+
+}
 
 
 async function renderWordHtml(){
@@ -50,99 +55,23 @@ async function renderWordHtml(){
     fetch(url)
     .then(response => response.json()) // assuming the response is JSON
     .then(data => {
-        
-        
-        renderWordTitle(data[0].word)
-        renderAudioQue(data[0].phonetic)
-        
-        // audio file (map array until .audio === truthy)
-        // Audio File
-        try {
-            const audioArr = data[0].phonetics
-            const audioFileLink = audioArr.find(audioObj => audioObj.audio !== '')
-            audioContainer.innerHTML = `
-            <button id="audio-play-btn"><img src="./assets/images/icon-play.svg" alt="play audio btn" class="play-audio-btn"></button>
-                
-            <audio id="audio-player">
-                <source id="audio-source" src="" type="audio/mp3">
-            </audio>
-            `
-            renderAudioSource(audioFileLink.audio)
+
+        globalData = data
+
+        if(typeof(data) !== Array){
+            console.log(data)
         }
-        catch {
-            audioContainer.innerHTML = ''
-            console.log('Audio Not Found')
+        else {
+
+            renderWordTitle(data[0].word)
+            renderAudioQue(data[0].phonetic)
+            renderAudioSource(data)
+            renderNounMeanings(data)
+            renderSynonyms(data)
+            renderVerbMeanings(data)
+            renderSource(data)    
         }
         
-        renderNounMeanings(data)
-        renderSynonyms(data)
-        renderVerbMeanings(data)
-        renderAudioSource(data)
-        renderSource(data)
-
-    
-    // // all Data
-    // console.log(data);
-
-    // // word-title
-    // console.log(data[0].word);
-    
-    // // audio-que (returns undefined if not found )
-    // try {
-    //     console.log(data[0].phonetic);
-    // }
-    // catch {
-    //     console.log('Audio Que Not Found')
-    // }
-    
-    // // audio file (map array until .audio === truthy)
-    // // Audio File
-    // try {
-    //     const audioArr = data[0].phonetics
-    //     const audioFileLink = audioArr.find(audioObj => audioObj.audio !== '')
-    
-    //     console.log(audioFileLink.audio)
-    // }
-    // catch {
-    //     console.log('Audio Not Found')
-    // }
-
-    // // noun-meanings-list (loop over arr and target .definition) (cap to 3)
-    // try {
-    //     console.log(data[0].meanings[0].definitions.slice(0, 3).map(noun => noun.definition))
-
-    // }
-    // catch {
-    //     console.log('Nouns Not Found')
-    // }
-    
-    // // synonyms-list (loop over arr) (cap to 3)
-    // try {
-    //     console.log(data[0].meanings[0].synonyms.slice(0, 3))
-    // }
-    // catch {
-    //     console.log('Synonyms Not Found')
-    // }
-    
-    // // verb-meanings-list (loop over arr and target .definition & .example) (cap to 3)
-    // try {
-    //     console.log(data[0].meanings[1].definitions.slice(0, 2))
-    // }
-    // catch {
-    //     console.log('Verbs Not Found')
-    // }
-    
-    // //source-link
-    // try {
-    //     console.log(data[0].sourceUrls)
-    // }
-    // catch {
-    //     console.log('Source Not Found')
-    // }
-
-
-
-    
 
   })
   .catch(error => {
@@ -150,14 +79,6 @@ async function renderWordHtml(){
   });
 
 }
-
-
-
-
-
-
-
-
 
 function renderWordTitle(word) {
 
@@ -180,13 +101,16 @@ function renderAudioQue(audioQue) {
 }
 
 // load audio file ready to play
-function renderAudioSource(source) {
+function renderAudioSource(data) {
 
-    audioPlayer.src = source
+    const audioLinksArr = data[0].phonetics.find(audioObj => audioObj.audio !== '')
 
-        // Pause and load the new source
-        audioPlayer.pause()
-        audioPlayer.load()
+    if (audioLinksArr === undefined) {
+        audioPlayBtn.style.display = 'none'
+    }
+    else {
+        audioPlayBtn.style.display = 'block'
+    }
 
 }
 
