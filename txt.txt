@@ -1,38 +1,10 @@
-- Render default template
+TODO
 
+- Font change
 
-- when the search btn is rendered
+- Change Theme
 
-- check input is not empty
-    - if so, render error message
-
-    - make api call, if word is found
-        - render word
-        - handle no audio
-        - handle no audio que
-        - handle no synonyms
-    - else 
-        - render No definitions found
-
-
-- render 
-
-    - check if an array has been returned
-        - if not, render returned error message
-    
-    - else 
-        - render #word-title
-
-        -render audio
-            - if audio-que doesnt exist
-                - dont render audio-que and play-btn & exit
-            - else
-                - render #audio-que
-                - map over .phonetics and find an object with .audio containing a link and store in a variable
-                - if no audio link found, don't render play-btn
-
-
-
+- Display not found msg
 
 
 ############# DATA 

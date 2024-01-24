@@ -1,13 +1,18 @@
 * {
-    font-family: Inter, sans-serif;
     box-sizing: border-box;
 }
 
 body {
+    font-family: Inter, sans-serif;
     margin: 1em;
     background: white;
     font-size: 0.95rem;
     line-height: 1.6rem;
+    
+}
+
+p, .heading-l, .section-header, #fontSelector, li, .source-link {
+    color: #2d2d2d;
 }
 
 li {
@@ -146,6 +151,9 @@ header .right-col {
 .source.link-wr {
     display: flex;
     align-items: center;
+}
+.source-link {
+    word-wrap: break-word;
 }
 
 
@@ -294,7 +302,7 @@ header .right-col {
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: var(--purple);
 }
 
 input:checked + .slider:before {

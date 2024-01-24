@@ -1,0 +1,23 @@
+body {
+    background: #050505;
+}
+
+p, .heading-l, .section-header, #fontSelector, li, .source-link {
+    color: white;
+}
+
+ul li::marker {
+    color: var(--purple);
+}
+
+.searchbar-wr {
+    background: #1f1f1f;
+}
+
+#searchbar {
+    color: white;
+}
+
+path.theme-icon {
+    stroke: green !important;
+}

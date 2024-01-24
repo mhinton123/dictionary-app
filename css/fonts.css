@@ -70,4 +70,5 @@
 
 .err-msg {
     color: red;
+    display: none;
 }

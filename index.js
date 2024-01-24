@@ -5,6 +5,10 @@ const searchBarWrapper = document.getElementById('searchbar-wr')
 const audioPlayBtn = document.getElementById('audio-play-btn')
 const audioPlayer = document.getElementById('audio-player')
 const audioContainer = document.getElementById('audio-play-btn-wr')
+const errMsg = document.getElementById('err-msg')
+const fontSelector = document.getElementById('fontSelector')
+const themeSwitch = document.getElementById('theme-switch')
+
 let globalData 
 
 
@@ -16,12 +20,15 @@ searchBtn.addEventListener('click', function(e){
         
         // reset searchbar border
         searchBarWrapper.style.border = 'none'
+        errMsg.style.display = 'none'
+        mainContainer.style.display = 'block'
         renderWordHtml()
     }
     else {
         
         // err msg
-        mainContainer.innerHTML = `<p class="err-msg">Whoops, can't be empty...</p>`
+        mainContainer.style.display = 'none'
+        errMsg.style.display = 'block'
         searchBarWrapper.style.border = 'solid 1px red'
     }
 })
@@ -36,14 +43,77 @@ audioPlayBtn.addEventListener('click', function(e){
 
 function getAudioLink(data) {
 
-    const audioLink = data[0].phonetics.find(audioObj => audioObj.audio !== '')
-    audioPlayer.src = audioLink.audio
+    if(data === undefined) {
+        audioPlayer.src = 'https://api.dictionaryapi.dev/media/pronunciations/en/keyboard-us.mp3'
+    }
+    else {
+        const audioLink = data[0].phonetics.find(audioObj => audioObj.audio !== '')
+        audioPlayer.src = audioLink.audio
+    }
+    
     audioPlayer.addEventListener('canplay', function(){
         audioPlayer.play()
     })
 
 }
 
+fontSelector.addEventListener('change', function() {
+    changeFont();
+});
+
+function changeFont() {
+    // Insert your code here to change the font
+    const selectedFont = fontSelector.value;
+    document.body.style.fontFamily = selectedFont;
+}
+
+// Add an event listener for the 'change' event
+themeSwitch.addEventListener('change', function() {
+    
+    // Check if the switch is turned on
+    if (themeSwitch.checked) {
+        
+        document.head.innerHTML = `
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/colours.css">
+        <link rel="stylesheet" href="./css/fonts.css">
+        <link rel="stylesheet" href="./css/styles.css">
+        <link rel="stylesheet" href="./css/dark-theme.css">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+        <title>Matt's Online Dictionary</title>
+        `
+        
+    } else {
+        
+        console.log('Switch is OFF');
+        document.head.innerHTML = `
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/colours.css">
+        <link rel="stylesheet" href="./css/fonts.css">
+        <link rel="stylesheet" href="./css/dark-theme.css">
+        <link rel="stylesheet" href="./css/styles.css">
+
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&family=Inter:wght@400;700&family=Lora:wght@400;700&display=swap" rel="stylesheet">
+
+        <title>Matt's Online Dictionary</title>
+    `
+        
+    }
+});
 
 async function renderWordHtml(){
     
@@ -57,12 +127,11 @@ async function renderWordHtml(){
     .then(data => {
 
         globalData = data
-
-        if(typeof(data) !== Array){
+        
+        if(data.title){
             console.log(data)
         }
         else {
-
             renderWordTitle(data[0].word)
             renderAudioQue(data[0].phonetic)
             renderAudioSource(data)
