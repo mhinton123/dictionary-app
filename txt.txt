@@ -1,10 +1,8 @@
 TODO
 
-- Font change
+Syle err message
 
-- Change Theme
-
-- Display not found msg
+reformat code
 
 
 ############# DATA 

@@ -8,7 +8,7 @@ const audioContainer = document.getElementById('audio-play-btn-wr')
 const errMsg = document.getElementById('err-msg')
 const fontSelector = document.getElementById('fontSelector')
 const themeSwitch = document.getElementById('theme-switch')
-
+const notFoundMsgContainer = document.getElementById('not-found-msg-wr')
 let globalData 
 
 
@@ -129,9 +129,13 @@ async function renderWordHtml(){
         globalData = data
         
         if(data.title){
-            console.log(data)
+            notFoundMsgContainer.style.display = 'block'
+            mainContainer.style.display = 'none'
         }
         else {
+            notFoundMsgContainer.style.display = 'none'
+            mainContainer.style.display = 'block'
+
             renderWordTitle(data[0].word)
             renderAudioQue(data[0].phonetic)
             renderAudioSource(data)
