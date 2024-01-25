@@ -1,32 +1,33 @@
-const searchBtn = document.getElementById('search-btn')
-const searchBar = document.getElementById('searchbar')
-const mainContainer = document.getElementById('main-container')
-const searchBarWrapper = document.getElementById('searchbar-wr')
 const audioPlayBtn = document.getElementById('audio-play-btn')
 const audioPlayer = document.getElementById('audio-player')
 const audioContainer = document.getElementById('audio-play-btn-wr')
 const errMsgContainer = document.getElementById('err-msg-wr')
-const fontSelector = document.getElementById('fontSelector')
-const themeSwitch = document.getElementById('theme-switch')
+const fontSelector = document.getElementById('font-selector')
+const mainContainer = document.getElementById('main-container')
 const notFoundMsgContainer = document.getElementById('not-found-msg-wr')
+const searchBtn = document.getElementById('search-btn')
+const searchBar = document.getElementById('searchbar')
+const searchBarWrapper = document.getElementById('searchbar-wr')
+const themeSwitch = document.getElementById('theme-switch')
+
 let globalData 
 
-
-// renders page when the user clicks search btn
+// renders word when user clicks search btn
 searchBtn.addEventListener('click', function(e){
     
-    // check iput is not empty
+    // check input is not empty
     if(searchBar.value) {
         
-        // reset searchbar border
+        // reset html
         searchBarWrapper.style.border = 'none'
         errMsgContainer.style.display = 'none'
         mainContainer.style.display = 'block'
+        
         renderWordHtml()
     }
     else {
         
-        // err msg
+        // display err msg
         mainContainer.style.display = 'none'
         notFoundMsgContainer.style.display = 'none'
         errMsgContainer.style.display = 'flex'
@@ -35,40 +36,35 @@ searchBtn.addEventListener('click', function(e){
 })
 
 
-// plays audio when btn is clicked
+// plays audio when play btn is clicked
 audioPlayBtn.addEventListener('click', function(e){
     
-    getAudioLink(globalData)
+    const data = globalData
     
-})
-
-function getAudioLink(data) {
-
+    // loads default page audio
     if(data === undefined) {
         audioPlayer.src = 'https://api.dictionaryapi.dev/media/pronunciations/en/keyboard-us.mp3'
     }
+    // updates audio src from api
     else {
         const audioLink = data[0].phonetics.find(audioObj => audioObj.audio !== '')
         audioPlayer.src = audioLink.audio
     }
     
+    // play audio when fully loaded
     audioPlayer.addEventListener('canplay', function(){
         audioPlayer.play()
     })
+})
 
-}
-
+// changes font when option is clicked
 fontSelector.addEventListener('change', function() {
-    changeFont();
-});
-
-function changeFont() {
-    // Insert your code here to change the font
+    
     const selectedFont = fontSelector.value;
     document.body.style.fontFamily = selectedFont;
-}
+});
 
-// Add an event listener for the 'change' event
+// changes theme when switch toggled
 themeSwitch.addEventListener('change', function() {
     
     // Check if the switch is turned on
@@ -114,7 +110,7 @@ themeSwitch.addEventListener('change', function() {
     `
         
     }
-});
+})
 
 async function renderWordHtml(){
     
@@ -129,6 +125,7 @@ async function renderWordHtml(){
 
         globalData = data
         
+        // checks if a word array is returned
         if(data.title){
             notFoundMsgContainer.style.display = 'flex'
             mainContainer.style.display = 'none'
@@ -145,12 +142,11 @@ async function renderWordHtml(){
             renderVerbMeanings(data)
             renderSource(data)    
         }
-        
 
   })
   .catch(error => {
-    console.error('Error fetching data:', error);
-  });
+    console.error('Error fetching data:', error)
+  })
 
 }
 
@@ -210,7 +206,6 @@ function renderNounMeanings(data) {
 
 function renderSynonyms(data) {
 
-    // synonyms-list (loop over arr) (cap to 3)
     try {
         const synonyms = data[0].meanings[0].synonyms.slice(0, 3)
         const synonymsListEl = document.getElementById('synonyms-list')
@@ -256,7 +251,7 @@ function renderVerbMeanings(data){
 function renderSource(data){
 
     const sourceEl = document.getElementById('source-link')
-    //source-link
+
     try {
         const sourceLink = data[0].sourceUrls
         sourceEl.innerHTML = `<a href="${sourceLink}" class="source-link body-s" id="source-link">${sourceLink}</a>`

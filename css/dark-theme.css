@@ -18,6 +18,6 @@ ul li::marker {
     color: white;
 }
 
-path.theme-icon {
-    stroke: green !important;
+#font-selector {
+    color: white;
 }

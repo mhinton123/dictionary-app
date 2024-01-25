@@ -24,7 +24,6 @@ li {
     margin: 0 auto;
 }
 
-
 /* Header */
 
 header {
@@ -42,7 +41,7 @@ header .right-col {
     display: flex;
 }
 
-#fontSelector {
+#font-selector {
     border: none;
     background: none;
     font-weight: 700;
@@ -139,7 +138,6 @@ header .right-col {
     padding-bottom: 1em;
 }
 
-
 /* Source Content */
 
 .source-header {
@@ -192,7 +190,6 @@ header .right-col {
 .not-found-msg-body {
     text-align: center;
 }
-
 
 /* Tablet */ 
 
