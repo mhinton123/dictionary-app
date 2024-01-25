@@ -5,7 +5,7 @@ const searchBarWrapper = document.getElementById('searchbar-wr')
 const audioPlayBtn = document.getElementById('audio-play-btn')
 const audioPlayer = document.getElementById('audio-player')
 const audioContainer = document.getElementById('audio-play-btn-wr')
-const errMsg = document.getElementById('err-msg')
+const errMsgContainer = document.getElementById('err-msg-wr')
 const fontSelector = document.getElementById('fontSelector')
 const themeSwitch = document.getElementById('theme-switch')
 const notFoundMsgContainer = document.getElementById('not-found-msg-wr')
@@ -20,7 +20,7 @@ searchBtn.addEventListener('click', function(e){
         
         // reset searchbar border
         searchBarWrapper.style.border = 'none'
-        errMsg.style.display = 'none'
+        errMsgContainer.style.display = 'none'
         mainContainer.style.display = 'block'
         renderWordHtml()
     }
@@ -28,7 +28,8 @@ searchBtn.addEventListener('click', function(e){
         
         // err msg
         mainContainer.style.display = 'none'
-        errMsg.style.display = 'block'
+        notFoundMsgContainer.style.display = 'none'
+        errMsgContainer.style.display = 'flex'
         searchBarWrapper.style.border = 'solid 1px red'
     }
 })
@@ -129,7 +130,7 @@ async function renderWordHtml(){
         globalData = data
         
         if(data.title){
-            notFoundMsgContainer.style.display = 'block'
+            notFoundMsgContainer.style.display = 'flex'
             mainContainer.style.display = 'none'
         }
         else {
